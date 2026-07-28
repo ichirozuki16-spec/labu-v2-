@@ -76,7 +76,22 @@ document.addEventListener("mousemove", (e) => {
     personaje.style.transform =
         `rotateX(${giroX}deg) rotateY(${giroY}deg)`;
 });
+document.addEventListener("touchmove", (e) => {
 
+    const dedo = e.touches[0];
+
+    const centroX = window.innerWidth / 2;
+    const centroY = window.innerHeight / 2;
+
+    const giroY =
+        ((dedo.clientX - centroX) / centroX) * 40;
+
+    const giroX =
+        ((centroY - dedo.clientY) / centroY) * 35;
+
+    personaje.style.transform =
+       ` rotateX(${giroX}deg) rotateY(${giroY}deg)
+`;
 document.addEventListener("mouseleave", () => {
 
     personaje.style.transform =
@@ -98,7 +113,7 @@ scene.addEventListener("mouseleave", () => {
     labubu.classList.add("parpadear");
 
     setTimeout(() => {
-        labubu.classList.remove("parpadear");
+       labubu.classList.remove("parpadear");
     }, 180);
 }
 
