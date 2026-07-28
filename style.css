@@ -1,0 +1,220 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:linear-gradient(180deg,#b77cff,#ffd6ff);
+
+    font-family:Arial,sans-serif;
+}
+
+#scene{
+
+    perspective:1000px;
+}
+
+#personaje{
+
+    position:relative;z-index:2;
+}
+
+#labubu{
+    width: 500px;
+
+    user-select: none;
+    cursor: pointer;
+
+    animation: respirar 2.5s ease-in-out infinite;
+    transition: filter .25s ease;
+}
+
+#labubu:hover{
+    filter: drop-shadow(0 0 25px #ff7ce5);
+}
+
+
+@keyframes respirar{
+
+    0%,100%{
+        scale :1.2;
+    }
+
+    50%{
+        scale: 1.0;
+    }
+}#salto.saltar{
+    animation: salto 0.6s ease;
+}
+
+@keyframes salto{
+    0%,100%{
+        translate:0 0;
+    }
+
+    45%{
+        translate:0 -70px;
+    }
+
+    70%{
+        translate:0 -15px;
+    }
+}
+.corazon{
+
+    position:absolute;
+
+    font-size:24px;
+
+    pointer-events:none;
+
+    animation:flotar 1s ease forwards;
+}
+
+@keyframes flotar{
+
+    0%{
+
+        opacity:1;
+        transform:translateY(0) scale(.5);
+
+    }
+
+    100%{
+
+        opacity:0;
+        transform:translateY(-100px) scale(1.5);
+
+    }
+
+}#burbuja{
+
+    position:absolute;
+
+    left:50%;
+    top:-120px;
+
+    transform:translateX(-50%) scale(0);
+
+    background:white;
+
+    padding:20px 30px;
+
+    border-radius:24px;
+
+    font-weight:bold;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+opacity:0;
+
+    pointer-events:none;
+    transition:
+
+        opacity .3s ease,
+
+        transform .3s ease;
+
+    white-space:nowrap;#burbuja::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    bottom:-12px;
+
+    transform:translateX(-50%);
+
+    width:20px;
+    height:20px;
+
+    background:white;
+
+    rotate:45deg;
+}
+}#burbuja.mostrar{
+
+    transform:translateX(-50%) scale(1);
+    opacity:1;
+}#scene{
+    perspective:1000px;
+}
+
+#personaje{
+    transition:transform .30s ease-out;
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+#salto{
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform .25s ease;
+}.parpadear {
+    animation: parpadeo 0.18s ease;
+}
+
+@keyframes parpadeo {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(0.92);
+    }
+}.particula{
+    position:fixed;
+    bottom:-30px;
+
+    font-size:22px;
+
+    pointer-events:none;
+    z-index:0;
+
+    animation:subir linear forwards;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}@media (max-width: 700px){
+
+    #labubu{
+        width: 320px;
+    }
+
+    #burbuja{
+        min-width: 180px;
+        max-width: 240px;
+
+        font-size: 20px;
+        padding: 14px 20px;
+
+        top: -90px;
+    }
+
+    .particula{
+        font-size: 16px;
+    }
+}
+
